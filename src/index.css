@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,21 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom styles for Beckermann Eiscreme */
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+  
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

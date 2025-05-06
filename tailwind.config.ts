@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,16 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+				eiscreme: {
+					DEFAULT: '#48B9A0',
+					dark: '#338170',
+				},
+			},
+			fontFamily: {
+				kavoon: ['Kavoon', 'cursive'],
+				inter: ['Inter', 'sans-serif'],
+				inder: ['Inder', 'sans-serif'],
+				seaweed: ['Seaweed Script', 'cursive'],
+				lalezar: ['Lalezar', 'cursive'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
