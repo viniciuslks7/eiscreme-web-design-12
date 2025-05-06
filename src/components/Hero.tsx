@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div className="w-full flex flex-col items-center md:items-start px-4 md:px-10 mt-8 md:mt-0">
-      <div className="max-w-[628px] flex flex-col items-center md:items-start">
+      <div className="max-w-[628px] flex flex-col items-center md:items-start relative" style={{ top: '295px' }}>
         <h2 className="font-inter font-bold text-4xl md:text-6xl text-white text-center md:text-left">
           SORVETERIA ALEMÃ
         </h2>
@@ -19,7 +19,11 @@ const Hero = () => {
           </p>
         </div>
         
-        <Link to="/comprar" className="mt-6 md:mt-10 px-8 py-4 bg-eiscreme-dark text-white rounded-lg font-inder text-xl md:text-2xl">
+        <Link 
+          to="/comprar" 
+          className="absolute mt-6 md:mt-10 px-8 py-4 bg-eiscreme-dark text-white rounded-lg font-inder text-xl md:text-2xl"
+          style={{ left: '335px', top: '363px', width: '255px', height: '68px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+        >
           COMPRE AGORA!
         </Link>
       </div>
