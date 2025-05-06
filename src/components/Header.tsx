@@ -1,5 +1,5 @@
 
-import { Search, ShoppingCart } from "lucide-react";
+import { Search, ShoppingCart, User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -36,6 +36,9 @@ const Header = () => {
         <button className="text-white">
           <ShoppingCart className="w-7 h-7" />
         </button>
+        <Link to="/login" className="text-white">
+          <User className="w-7 h-7" />
+        </Link>
       </div>
     </header>
   );

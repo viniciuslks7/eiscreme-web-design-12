@@ -59,7 +59,13 @@ const config: Config = {
         eiscreme: {
           DEFAULT: "#48B9A0", // Base turquoise color
           dark: "#338170", // Darker turquoise for buttons
+          login: "#349882", // Background color for login page
         },
+      },
+      fontFamily: {
+        kavoon: ["Kavoon", "cursive"],
+        inter: ["Inter", "sans-serif"],
+        inder: ["Inder", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
