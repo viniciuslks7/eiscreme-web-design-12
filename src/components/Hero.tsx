@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="w-full flex flex-col items-center md:items-end px-4 md:px-10 mt-8 md:mt-0">
+    <div className="w-full flex flex-col items-center md:items-start px-4 md:px-10 mt-8 md:mt-0">
       <div className="max-w-[628px] flex flex-col items-center md:items-start">
         <h2 className="font-inter font-bold text-4xl md:text-6xl text-white text-center md:text-left">
           SORVETERIA ALEMÃ
