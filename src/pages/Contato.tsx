@@ -1,52 +1,76 @@
-
 import React from "react";
 import { Phone, Mail, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Contato = () => {
   // Background logo positions for the pattern
-  const backgroundLogos = [
-    { left: "-150.83px", top: "-55.79px" },
-    { left: "178.53px", top: "-141px" },
-    { left: "535.53px", top: "150px" },
-    { left: "139.53px", top: "211px" },
-    { left: "-225.47px", top: "94px" },
-    { left: "127.53px", top: "394px" },
-    { left: "-180.47px", top: "484px" },
-    { left: "211.53px", top: "602px" },
-    { left: "-165.47px", top: "641px" },
-    { left: "489.53px", top: "722px" },
-    { left: "166.53px", top: "70px" },
-    { left: "-239.47px", top: "281px" },
-    { left: "504.53px", top: "492px" },
-    { left: "447.53px", top: "-18px" },
-    { left: "572.53px", top: "-141px" },
-    { left: "502.53px", top: "316px" },
-  ];
-
-  return (
-    <div className="min-h-screen relative overflow-hidden bg-[#349882]">
+  const backgroundLogos = [{
+    left: "-150.83px",
+    top: "-55.79px"
+  }, {
+    left: "178.53px",
+    top: "-141px"
+  }, {
+    left: "535.53px",
+    top: "150px"
+  }, {
+    left: "139.53px",
+    top: "211px"
+  }, {
+    left: "-225.47px",
+    top: "94px"
+  }, {
+    left: "127.53px",
+    top: "394px"
+  }, {
+    left: "-180.47px",
+    top: "484px"
+  }, {
+    left: "211.53px",
+    top: "602px"
+  }, {
+    left: "-165.47px",
+    top: "641px"
+  }, {
+    left: "489.53px",
+    top: "722px"
+  }, {
+    left: "166.53px",
+    top: "70px"
+  }, {
+    left: "-239.47px",
+    top: "281px"
+  }, {
+    left: "504.53px",
+    top: "492px"
+  }, {
+    left: "447.53px",
+    top: "-18px"
+  }, {
+    left: "572.53px",
+    top: "-141px"
+  }, {
+    left: "502.53px",
+    top: "316px"
+  }];
+  return <div className="min-h-screen relative overflow-hidden bg-[#349882]">
       {/* Background logos pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        {backgroundLogos.map((position, index) => (
-          <div 
-            key={index} 
-            className="absolute font-kavoon text-[#48B9A0] text-[59.6347px] leading-[75px] flex justify-center items-center p-[14.9087px] gap-[14.91px]"
-            style={{
-              width: "397.82px",
-              height: "179.82px",
-              left: position.left,
-              top: position.top,
-              transform: "rotate(10.1deg)",
-              opacity: 0.15,
-              pointerEvents: "none",
-            }}
-          >
-            <div style={{ width: "368px", height: "150px" }}>
-              Beckermann<br/>Eiscreme
+        {backgroundLogos.map((position, index) => <div key={index} className="absolute font-kavoon text-[#48B9A0] text-[59.6347px] leading-[75px] flex justify-center items-center p-[14.9087px] gap-[14.91px]" style={{
+        width: "397.82px",
+        height: "179.82px",
+        left: position.left,
+        top: position.top,
+        transform: "rotate(10.1deg)",
+        opacity: 0.15,
+        pointerEvents: "none"
+      }}>
+            <div style={{
+          width: "368px",
+          height: "150px"
+        }}>
+              Beckermann<br />Eiscreme
             </div>
-          </div>
-        ))}
+          </div>)}
       </div>
 
       {/* Main content layout */}
@@ -65,19 +89,14 @@ const Contato = () => {
           
           {/* Ice cream image - Added with the specified positioning */}
           <div className="relative w-full h-[400px] md:h-[630px] mt-8">
-            <img 
-              src="/lovable-uploads/b329e93c-9558-4cf8-a4cb-c9f8879f02e0.png" 
-              alt="Sorvete" 
-              className="absolute"
-              style={{
-                width: "741.42px",
-                height: "629.6px",
-                left: "0",
-                top: "0",
-                transform: "rotate(57.01deg)",
-                maxWidth: "none",
-              }} 
-            />
+            <img src="/lovable-uploads/b329e93c-9558-4cf8-a4cb-c9f8879f02e0.png" alt="Sorvete" style={{
+            width: "741.42px",
+            height: "629.6px",
+            left: "0",
+            top: "0",
+            transform: "rotate(57.01deg)",
+            maxWidth: "none"
+          }} className="absolute object-fill" />
           </div>
         </div>
         
@@ -110,11 +129,7 @@ const Contato = () => {
             
             {/* Google Maps embed */}
             <div className="bg-[#349882] w-full h-[264px] rounded-[13px] flex justify-center items-center my-6">
-              <img 
-                src="https://maps.googleapis.com/maps/api/staticmap?center=São+Paulo,Brazil&zoom=13&size=500x250&maptype=roadmap&key=AIzaSyBdOY_TpRDaue5rWzdkPGqpTwgki7VKBxE" 
-                alt="Localização" 
-                className="w-full h-full object-cover rounded-[13px]"
-              />
+              <img src="https://maps.googleapis.com/maps/api/staticmap?center=São+Paulo,Brazil&zoom=13&size=500x250&maptype=roadmap&key=AIzaSyBdOY_TpRDaue5rWzdkPGqpTwgki7VKBxE" alt="Localização" className="w-full h-full object-cover rounded-[13px]" />
             </div>
             
             {/* Contact button */}
@@ -150,8 +165,6 @@ const Contato = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Contato;
