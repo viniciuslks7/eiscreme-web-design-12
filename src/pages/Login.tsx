@@ -194,7 +194,7 @@ const Login = () => {
             }}
           >
             <img 
-              src="/lovable-uploads/8b1d57cb-e8df-49b8-90f6-d1118948b21e.png" 
+              src="/lovable-uploads/ce34802a-f637-4a5e-b1fa-82a3d721e9aa.png" 
               alt="Sorvete" 
               className="absolute"
               style={{
