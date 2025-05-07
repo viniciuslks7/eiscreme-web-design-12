@@ -1,7 +1,8 @@
 
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 
-const config: Config = {
+export default {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -56,39 +57,65 @@ const config: Config = {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
         },
+        "sidebar-muted": "hsl(var(--sidebar-muted))",
+        "sidebar-accent": {
+          DEFAULT: "hsl(var(--sidebar-accent))",
+          foreground: "hsl(var(--sidebar-accent-foreground))",
+        },
+        "sidebar-primary": {
+          DEFAULT: "hsl(var(--sidebar-primary))",
+          foreground: "hsl(var(--sidebar-primary-foreground))",
+        },
         eiscreme: {
-          DEFAULT: "#48B9A0", // Base turquoise color
-          dark: "#338170", // Darker turquoise for buttons
-          login: "#349882", // Background color for login page
+          DEFAULT: "#349882",
+          dark: "#48B9A0",
         },
       },
-      fontFamily: {
-        kavoon: ["Kavoon", "cursive"],
-        inter: ["Inter", "sans-serif"],
-        inder: ["Inder", "sans-serif"],
-      },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
         sm: "calc(var(--radius) - 4px)",
+      },
+      fontFamily: {
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        kavoon: ["Kavoon", ...fontFamily.sans],
+        inter: ["Inter", ...fontFamily.sans],
+        inder: ["Inder", ...fontFamily.sans],
+        poppins: ["Poppins", ...fontFamily.sans],
+        nunito: ["Nunito Sans", ...fontFamily.sans],
+        baloo: ["Baloo", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-accordion-content-height)", opacity: "1" },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+            opacity: "1",
+          },
+          to: { height: "0", opacity: "0" },
+        },
+        "collapsible-down": {
+          from: { height: "0", opacity: "0" },
+          to: { height: "var(--radix-collapsible-content-height)", opacity: "1" },
+        },
+        "collapsible-up": {
+          from: {
+            height: "var(--radix-collapsible-content-height)",
+            opacity: "1",
+          },
+          to: { height: "0", opacity: "0" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "collapsible-down": "collapsible-down 0.2s ease-in-out",
+        "collapsible-up": "collapsible-up 0.2s ease-in-out",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-};
-
-export default config;
+} satisfies Config;
