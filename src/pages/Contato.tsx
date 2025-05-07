@@ -63,17 +63,19 @@ const Contato = () => {
             </p>
           </div>
           
-          {/* Ice cream image */}
+          {/* Ice cream image - Added with the specified positioning */}
           <div className="relative w-full h-[400px] md:h-[630px] mt-8">
             <img 
-              src="/lovable-uploads/1dd19d0a-d92b-4907-a0b9-fd7e07c034a6.png" 
+              src="/lovable-uploads/b329e93c-9558-4cf8-a4cb-c9f8879f02e0.png" 
               alt="Sorvete" 
-              className="absolute transform rotate-[57deg]"
+              className="absolute"
               style={{
-                width: "741px",
-                maxWidth: "none",
+                width: "741.42px",
+                height: "629.6px",
                 left: "0",
                 top: "0",
+                transform: "rotate(57.01deg)",
+                maxWidth: "none",
               }} 
             />
           </div>
