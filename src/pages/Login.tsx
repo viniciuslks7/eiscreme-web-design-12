@@ -22,22 +22,45 @@ const Login = () => {
     // Here you would add authentication logic
   };
 
+  const backgroundLogos = [
+    { left: "589.17px", top: "-55.79px" },
+    { left: "918.53px", top: "-141px" },
+    { left: "1275.53px", top: "150px" },
+    { left: "879.53px", top: "211px" },
+    { left: "514.53px", top: "94px" },
+    { left: "867.53px", top: "394px" },
+    { left: "559.53px", top: "484px" },
+    { left: "951.53px", top: "602px" },
+    { left: "574.53px", top: "641px" },
+    { left: "1229.53px", top: "722px" },
+    { left: "906.53px", top: "70px" },
+    { left: "500.53px", top: "281px" },
+    { left: "1244.53px", top: "492px" },
+    { left: "1187.53px", top: "-18px" },
+    { left: "1312.53px", top: "-141px" },
+  ];
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#349882]">
       {/* Background logos pattern */}
       <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 15 }).map((_, index) => (
+        {backgroundLogos.map((position, index) => (
           <div 
             key={index} 
-            className="absolute font-kavoon text-[#48B9A0] text-5xl md:text-6xl transform rotate-[10deg]"
+            className="absolute font-kavoon text-[#48B9A0] text-[59.6347px] leading-[75px] flex justify-center items-center p-[14.9087px] gap-[14.91px]"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: "397.82px",
+              height: "179.82px",
+              left: position.left,
+              top: position.top,
+              transform: "rotate(10.1deg)",
               opacity: 0.15,
               pointerEvents: "none",
             }}
           >
-            Beckermann<br/>Eiscreme
+            <div style={{ width: "368px", height: "150px" }}>
+              Beckermann<br/>Eiscreme
+            </div>
           </div>
         ))}
       </div>
@@ -159,12 +182,29 @@ const Login = () => {
             </p>
           </div>
           
-          {/* Ice cream image */}
-          <div className="absolute bottom-0 right-0 transform translate-x-1/4 translate-y-1/8">
+          {/* Ice cream image - TeostraIC */}
+          <div 
+            className="absolute" 
+            style={{
+              width: "737.96px", 
+              height: "832.14px", 
+              left: "920.38px", 
+              top: "225px", 
+              transform: "rotate(32.69deg)"
+            }}
+          >
             <img 
-              src="/lovable-uploads/8b63b1d8-6044-41dd-8847-c6ef333d200e.png" 
-              alt="Sorvete de Chocolate" 
-              className="w-[80%] h-auto max-h-[500px] object-contain transform rotate-[16deg]" 
+              src="/lovable-uploads/8b1d57cb-e8df-49b8-90f6-d1118948b21e.png" 
+              alt="Sorvete" 
+              className="absolute"
+              style={{
+                left: "60.89%", 
+                right: "-60.89%", 
+                top: "0%", 
+                bottom: "0%", 
+                transform: "rotate(32.69deg)",
+                maxWidth: "none"
+              }} 
             />
           </div>
         </div>
