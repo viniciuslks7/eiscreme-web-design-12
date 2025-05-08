@@ -1,4 +1,3 @@
-
 import { type Config } from "tailwindcss";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
@@ -83,7 +82,7 @@ export default {
         inder: ["Inder", ...fontFamily.sans],
         poppins: ["Poppins", ...fontFamily.sans],
         nunito: ["Nunito Sans", ...fontFamily.sans],
-        baloo: ["Baloo", ...fontFamily.sans],
+        baloo: ["Baloo 2", ...fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {
