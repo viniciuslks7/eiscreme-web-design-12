@@ -102,7 +102,7 @@ const Sabores = () => {
       
       {/* Vanilla Ice Cream Label */}
       <div className="absolute w-[144px] h-[106px] left-[662px] top-[539px]">
-        <div className="absolute w-[144px] h-[69px] left-[662px] top-[573px] bg-[#48B9A0] border-2 border-white rounded-xl">
+        <div className="absolute w-[144px] h-[69px] left-[662px] top-[573px] bg-[#48B9A0] border-2 border-white rounded-xl -translate-x-[662px] -translate-y-[547px]">
           <div className="absolute w-[100px] h-[46px] left-[675px] top-[547px] bg-[#48B9A0] border-2 border-white rounded-xl -translate-x-[662px] -translate-y-[547px]">
             <p className="absolute w-[71px] h-[36px] left-[695px] top-[554px] font-['Baloo'] text-white text-[14.77px] leading-[123%] -translate-x-[662px] -translate-y-[547px]">
               Casquinha baunilha
@@ -164,10 +164,41 @@ const Sabores = () => {
       
       {/* Social Media Icons */}
       <div className="absolute bottom-[30px] right-[30px] flex space-x-4">
-        <div className="w-10 h-10 bg-white rounded-full"></div>
-        <div className="w-10 h-10 bg-white rounded-full"></div>
-        <div className="w-10 h-10 bg-white rounded-full"></div>
-        <div className="w-10 h-10 bg-white rounded-full"></div>
+        {/* Google Icon */}
+        <div className="w-[39px] h-[39px] rounded-full overflow-hidden">
+          <img 
+            src="/lovable-uploads/09a235e3-c42e-4759-9a17-6d659027c536.png" 
+            alt="Google" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Facebook Icon */}
+        <div className="w-[40px] h-[39px] rounded-full overflow-hidden">
+          <img 
+            src="/lovable-uploads/951a2f4d-2646-4fa7-a0e4-5ff823c6e413.png" 
+            alt="Facebook" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Twitter Icon */}
+        <div className="w-[40px] h-[39px] rounded-full overflow-hidden">
+          <img 
+            src="/lovable-uploads/41a4bd1a-d5c7-47ae-ae24-999b9f6641e7.png" 
+            alt="Twitter" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Instagram Icon */}
+        <div className="w-[39px] h-[39px] rounded-full overflow-hidden">
+          <img 
+            src="/lovable-uploads/e926942d-6b2f-46f2-89d8-f463f954c758.png" 
+            alt="Instagram" 
+            className="w-full h-full object-cover"
+          />
+        </div>
       </div>
     </div>
   );
