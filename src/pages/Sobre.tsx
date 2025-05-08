@@ -6,34 +6,31 @@ import { Phone, Home } from "lucide-react";
 const Sobre = () => {
   return (
     <div className="relative min-h-screen w-full bg-white overflow-hidden">
-      {/* Header Section with Logo and Icons */}
-      <div className="absolute top-0 left-0 right-0 h-[120px]">
-        {/* Logo */}
-        <div 
-          className="absolute flex flex-row justify-center items-center p-[8.47px] gap-[8.47px] w-[225.94px] h-[100.94px] left-[52.15px] top-[34px]"
+      {/* Logo */}
+      <div 
+        className="absolute flex flex-row justify-center items-center p-[8.47px] gap-[8.47px] w-[225.94px] h-[100.94px] left-[52.15px] top-[34px]"
+        style={{ transform: "rotate(0.09deg)" }}
+      >
+        <h1 
+          className="w-[209px] h-[84px] font-kavoon text-[33.878px] leading-[42px] text-[#48B9A0]"
           style={{ transform: "rotate(0.09deg)" }}
         >
-          <h1 
-            className="w-[209px] h-[84px] font-kavoon text-[33.878px] leading-[42px] text-[#48B9A0]"
-            style={{ transform: "rotate(0.09deg)" }}
-          >
-            Beckermann<br />Eiscreme
-          </h1>
-        </div>
+          Beckermann<br />Eiscreme
+        </h1>
+      </div>
 
-        {/* Icons */}
-        <div className="absolute w-[108px] h-[48px] left-[1301px] top-[58px] flex">
-          {/* Headset Icon */}
-          <div className="absolute w-[48px] h-[48px] left-[-3px] top-[0px]">
-            <Phone className="absolute left-[16.67%] right-[16.67%] top-[16.67%] bottom-[16.67%] text-[#48B9A0]" />
-          </div>
-          
-          {/* Home Icon */}
-          <div className="absolute w-[48px] h-[48px] left-[54px] top-[0px]">
-            <Link to="/">
-              <Home className="absolute left-[16.67%] right-[16.67%] top-[16.67%] bottom-[16.67%] text-[#48B9A0]" />
-            </Link>
-          </div>
+      {/* Icons */}
+      <div className="absolute w-[108px] h-[48px] left-[1301px] top-[58px] flex">
+        {/* Headset Icon */}
+        <div className="absolute w-[48px] h-[48px] left-[-3px] top-[0px]">
+          <Phone className="absolute left-[16.67%] right-[16.67%] top-[16.67%] bottom-[16.67%] text-[#48B9A0]" />
+        </div>
+        
+        {/* Home Icon */}
+        <div className="absolute w-[48px] h-[48px] left-[54px] top-[0px]">
+          <Link to="/">
+            <Home className="absolute left-[16.67%] right-[16.67%] top-[16.67%] bottom-[16.67%] text-[#48B9A0]" />
+          </Link>
         </div>
       </div>
 
@@ -71,7 +68,7 @@ const Sobre = () => {
       {/* Background Image */}
       <div className="absolute w-[730px] h-[730px] left-[730px] top-[53px]">
         <img 
-          src="/lovable-uploads/75481cea-7b09-47c2-a9c3-91f2ccb40e8a.png"
+          src="/lovable-uploads/13a9ba5c-b6fd-4772-aebe-6f4fa10c00ac.png"
           alt="Sorvete Premium" 
           className="w-full h-full object-contain"
         />
