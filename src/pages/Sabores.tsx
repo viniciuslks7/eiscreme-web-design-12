@@ -1,16 +1,15 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
-import { Search, ShoppingCart, User } from "lucide-react";
+import { Search, ShoppingCart, User, Facebook, Twitter, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Sabores = () => {
   return (
     <div className="min-h-screen bg-[#48B9A0] relative overflow-hidden">
-      {/* Background milk splash image */}
+      {/* Background milk splash image - Substituída pela nova imagem */}
       <div className="absolute right-0 bottom-0 pointer-events-none opacity-50 z-0">
         <img 
-          src="/lovable-uploads/af7cb27d-c398-4d45-9e80-e4af392af303.png" 
+          src="/lovable-uploads/ba60d359-2d97-4212-ae3e-5fda4e82cb49.png" 
           alt="Background" 
           className="w-full h-full object-contain" 
         />
@@ -186,42 +185,30 @@ const Sabores = () => {
         </div>
       </div>
       
-      {/* Social Media Icons */}
+      {/* Social Media Icons - Atualizado com novos ícones */}
       <div className="absolute bottom-[30px] right-[30px] flex space-x-4">
         {/* Google Icon */}
-        <div className="w-[39px] h-[39px] rounded-full overflow-hidden">
+        <div className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center">
           <img 
             src="/lovable-uploads/09a235e3-c42e-4759-9a17-6d659027c536.png" 
             alt="Google" 
-            className="w-full h-full object-cover"
+            className="w-[24px] h-[24px] object-contain"
           />
         </div>
         
         {/* Facebook Icon */}
-        <div className="w-[40px] h-[39px] rounded-full overflow-hidden">
-          <img 
-            src="/lovable-uploads/951a2f4d-2646-4fa7-a0e4-5ff823c6e413.png" 
-            alt="Facebook" 
-            className="w-full h-full object-cover"
-          />
+        <div className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center">
+          <Facebook className="w-[24px] h-[24px] text-[#48B9A0]" />
         </div>
         
         {/* Twitter Icon */}
-        <div className="w-[40px] h-[39px] rounded-full overflow-hidden">
-          <img 
-            src="/lovable-uploads/41a4bd1a-d5c7-47ae-ae24-999b9f6641e7.png" 
-            alt="Twitter" 
-            className="w-full h-full object-cover"
-          />
+        <div className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center">
+          <Twitter className="w-[24px] h-[24px] text-[#48B9A0]" />
         </div>
         
         {/* Instagram Icon */}
-        <div className="w-[39px] h-[39px] rounded-full overflow-hidden">
-          <img 
-            src="/lovable-uploads/e926942d-6b2f-46f2-89d8-f463f954c758.png" 
-            alt="Instagram" 
-            className="w-full h-full object-cover"
-          />
+        <div className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center">
+          <Instagram className="w-[24px] h-[24px] text-[#48B9A0]" />
         </div>
       </div>
     </div>
