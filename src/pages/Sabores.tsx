@@ -2,16 +2,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Search, ShoppingCart, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Sabores = () => {
   return (
     <div className="min-h-screen bg-[#48B9A0] relative overflow-hidden">
-      {/* Background image */}
-      <div className="absolute -right-16 bottom-0 pointer-events-none opacity-20">
+      {/* Background milk splash image */}
+      <div className="absolute right-0 bottom-0 pointer-events-none opacity-50 z-0">
         <img 
-          src="/lovable-uploads/8bf12141-fce0-4e84-beaf-58c17fbfa9bf.png" 
+          src="/lovable-uploads/af7cb27d-c398-4d45-9e80-e4af392af303.png" 
           alt="Background" 
-          className="w-[400px] h-[400px] object-contain transform -scale-x-100" 
+          className="w-full h-full object-contain" 
         />
       </div>
       
@@ -54,62 +55,131 @@ const Sabores = () => {
         </Link>
       </div>
       
-      {/* Main Content - Ice Cream Images */}
-      <div className="absolute top-[160px] left-0 w-full">
-        <div className="flex justify-center">
-          {/* Vanilla Ice Cream - 50 reais */}
-          <div className="relative mx-8">
-            <div className="absolute w-[267px] h-[586px]">
-              <img 
-                src="/lovable-uploads/2d402cbb-15e4-4459-87b6-42f46036c956.png" 
-                alt="Casquinha Baunilha" 
-                className="h-full object-contain"
-              />
+      {/* Hero section */}
+      <div className="absolute w-[444px] left-[171px] top-[214px]">
+        <h2 className="font-inter font-bold text-[46.655px] leading-[56px] text-white">
+          OS CLÁSSICOS ESTÃO DE VOLTA
+        </h2>
+        <p className="font-kavoon text-[18.76px] leading-[23px] text-white mt-4">
+          O MELHOR SORVETE ALEMÃO! NO BRASIL!
+        </p>
+        <p className="font-inder text-[24px] leading-[30px] text-white mt-6 w-[437px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        
+        <Button 
+          className="mt-10 bg-transparent border-2 border-white rounded-lg text-white font-poppins text-[32px] leading-[39px] py-4 px-8"
+        >
+          Carregar mais
+        </Button>
+      </div>
+      
+      {/* Ice Cream Images with Price Labels */}
+      {/* Vanilla Ice Cream - 50 reais */}
+      <div className="absolute w-[267px] h-[586px] left-[529px] top-[160px]">
+        <img 
+          src="/lovable-uploads/2d402cbb-15e4-4459-87b6-42f46036c956.png" 
+          alt="Casquinha Baunilha" 
+          className="h-full object-contain"
+        />
+        <div className="absolute bottom-20 left-[33px]">
+          {/* Price tag for vanilla */}
+          <div className="relative">
+            {/* White circle */}
+            <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
+            
+            {/* V letter */}
+            <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
+              V
             </div>
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 bg-[#48B9A0] border-2 border-white rounded-xl px-6 py-2">
-              <p className="font-baloo text-white text-center mb-1">Casquinha Baunilha</p>
+            
+            {/* Description box */}
+            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[100px]">
+              <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
+                Casquinha baunilha
+              </p>
+            </div>
+            
+            {/* Price box */}
+            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
               <div className="flex items-center justify-center">
-                <span className="font-baloo text-white text-2xl mr-1">R$</span>
-                <span className="font-baloo text-white text-5xl">50</span>
-                <span className="font-baloo text-white text-xl">,00</span>
+                <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
+                <span className="font-baloo text-white text-[48.41px]">50</span>
+                <span className="font-baloo text-white text-[21.33px] mt-2">,00</span>
               </div>
             </div>
           </div>
-          
-          {/* Strawberry Ice Cream - 100 reais */}
-          <div className="relative mx-8">
-            <div className="absolute w-[267px] h-[586px]">
-              <img 
-                src="/lovable-uploads/9649b6c5-d077-48a1-800c-26f72deccaa3.png" 
-                alt="Casquinha Morango" 
-                className="h-full object-contain"
-              />
+        </div>
+      </div>
+      
+      {/* Strawberry Ice Cream - 100 reais */}
+      <div className="absolute w-[284px] h-[586px] left-[793px] top-[160px]">
+        <img 
+          src="/lovable-uploads/9649b6c5-d077-48a1-800c-26f72deccaa3.png" 
+          alt="Casquinha Morango" 
+          className="h-full object-contain"
+        />
+        <div className="absolute bottom-20 left-[33px]">
+          {/* Price tag for strawberry */}
+          <div className="relative">
+            {/* White circle */}
+            <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
+            
+            {/* V letter */}
+            <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
+              V
             </div>
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 bg-[#48B9A0] border-2 border-white rounded-xl px-6 py-2">
-              <p className="font-baloo text-white text-center mb-1">Casquinha Morango</p>
+            
+            {/* Description box */}
+            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[100px]">
+              <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
+                Casquinha morango
+              </p>
+            </div>
+            
+            {/* Price box */}
+            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
               <div className="flex items-center justify-center">
-                <span className="font-baloo text-white text-2xl mr-1">R$</span>
-                <span className="font-baloo text-white text-5xl">100</span>
-                <span className="font-baloo text-white text-xl">,00</span>
+                <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
+                <span className="font-baloo text-white text-[48.41px]">100</span>
+                <span className="font-baloo text-white text-[21.33px] mt-2">,00</span>
               </div>
             </div>
           </div>
-          
-          {/* Mixed Ice Cream - 250 reais */}
-          <div className="relative mx-8">
-            <div className="absolute w-[308px] h-[586px]">
-              <img 
-                src="/lovable-uploads/c44538fb-0db3-4a1f-bb6f-8a24fbf9159a.png" 
-                alt="Casquinha Mista" 
-                className="h-full object-contain"
-              />
+        </div>
+      </div>
+      
+      {/* Mixed Ice Cream - 250 reais */}
+      <div className="absolute w-[308px] h-[586px] left-[1043px] top-[160px]">
+        <img 
+          src="/lovable-uploads/c44538fb-0db3-4a1f-bb6f-8a24fbf9159a.png" 
+          alt="Casquinha Mista" 
+          className="h-full object-contain"
+        />
+        <div className="absolute bottom-20 left-[33px]">
+          {/* Price tag for mixed */}
+          <div className="relative">
+            {/* White circle */}
+            <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
+            
+            {/* V letter */}
+            <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
+              V
             </div>
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 bg-[#48B9A0] border-2 border-white rounded-xl px-6 py-2">
-              <p className="font-baloo text-white text-center mb-1">Casquinha Mista</p>
+            
+            {/* Description box */}
+            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[100px]">
+              <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
+                Casquinha mista
+              </p>
+            </div>
+            
+            {/* Price box */}
+            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
               <div className="flex items-center justify-center">
-                <span className="font-baloo text-white text-2xl mr-1">R$</span>
-                <span className="font-baloo text-white text-5xl">250</span>
-                <span className="font-baloo text-white text-xl">,00</span>
+                <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
+                <span className="font-baloo text-white text-[48.41px]">250</span>
+                <span className="font-baloo text-white text-[21.33px] mt-2">,00</span>
               </div>
             </div>
           </div>
