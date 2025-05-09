@@ -77,11 +77,11 @@ const Sobre = () => {
         remaining essentially unchanged.
       </div>
 
-      {/* Background Image */}
+      {/* Background Image - Updated to new ice cream image */}
       <div className="absolute w-[730px] h-[730px] left-[730px] top-[53px]">
         <img 
-          src="/lovable-uploads/13a9ba5c-b6fd-4772-aebe-6f4fa10c00ac.png"
-          alt="Sorvete Premium" 
+          src="/lovable-uploads/479cc453-12ee-4ca1-a9a2-ee283357c273.png"
+          alt="Sorvete Premium com Calda de Chocolate e Frutas" 
           className="w-full h-full object-contain"
         />
       </div>
