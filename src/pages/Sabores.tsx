@@ -1,15 +1,43 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, ShoppingCart, User, Facebook, Twitter, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useProducts } from "@/contexts/ProductContext";
+import { useCart } from "@/contexts/CartContext";
 
 const Sabores = () => {
+  const { products } = useProducts();
+  const { addToCart } = useCart();
+  const [showAll, setShowAll] = useState(false);
+  
+  const displayProducts = showAll ? products : products.slice(0, 3);
+  
+  const handleAddToCart = (product: any) => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      image: product.image
+    });
+  };
+
+  const formatPrice = (price: number) => {
+    const wholePart = Math.floor(price);
+    const decimalPart = Math.round((price - wholePart) * 100);
+    return {
+      whole: wholePart,
+      decimal: decimalPart.toString().padStart(2, '0')
+    };
+  };
+
   return (
     <div className="min-h-screen bg-[#48B9A0] relative overflow-hidden">
-      {/* Background milk splash image - Substituída pela nova imagem */}
+      {/* Background image */}
       <div className="absolute right-0 bottom-0 pointer-events-none opacity-50 z-0">
         <img 
-          src="/lovable-uploads/ba60d359-2d97-4212-ae3e-5fda4e82cb49.png" 
+          src="/lovable-uploads/5fef561c-cee2-4a6a-bed2-516227457f75.png" 
           alt="Background" 
           className="w-full h-full object-contain" 
         />
@@ -46,9 +74,9 @@ const Sabores = () => {
         <button className="flex items-center p-2.5">
           <Search className="w-7 h-7 text-white" />
         </button>
-        <button>
+        <Link to="/comprar">
           <ShoppingCart className="w-7 h-7 text-white" />
-        </button>
+        </Link>
         <Link to="/login">
           <User className="w-7 h-7 text-white" />
         </Link>
@@ -68,124 +96,65 @@ const Sabores = () => {
         
         <Button 
           className="mt-10 bg-transparent border-2 border-white rounded-lg text-white font-poppins text-[32px] leading-[39px] py-4 px-8"
+          onClick={() => setShowAll(!showAll)}
         >
-          Carregar mais
+          {showAll ? "Mostrar menos" : "Carregar mais"}
         </Button>
       </div>
       
       {/* Ice Cream Images with Price Labels */}
-      {/* Vanilla Ice Cream - 50 reais */}
-      <div className="absolute w-[267px] h-[586px] left-[529px] top-[160px]">
-        <img 
-          src="/lovable-uploads/2d402cbb-15e4-4459-87b6-42f46036c956.png" 
-          alt="Casquinha Baunilha" 
-          className="h-full object-contain"
-        />
-        <div className="absolute bottom-20 left-[33px]">
-          {/* Price tag for vanilla */}
-          <div className="relative">
-            {/* White circle */}
-            <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
-            
-            {/* V letter */}
-            <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
-              V
-            </div>
-            
-            {/* Description box */}
-            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[100px]">
-              <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
-                Casquinha baunilha
-              </p>
-            </div>
-            
-            {/* Price box */}
-            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
-              <div className="flex items-center justify-center">
-                <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
-                <span className="font-baloo text-white text-[48.41px]">50</span>
-                <span className="font-baloo text-white text-[21.33px] mt-2">,00</span>
+      {displayProducts.map((product, index) => {
+        const price = formatPrice(product.price);
+        const positions = [
+          { left: "529px", top: "160px" },
+          { left: "793px", top: "160px" },
+          { left: "1043px", top: "160px" }
+        ];
+        
+        // Use default position if more than 3 products
+        const position = positions[index] || { left: `${529 + (index % 3) * 264}px`, top: `${160 + Math.floor(index / 3) * 300}px` };
+        
+        return (
+          <div key={product.id} className="absolute w-[267px] h-[586px]" style={{ left: position.left, top: position.top }}>
+            <img 
+              src={product.image} 
+              alt={product.name} 
+              className="h-full object-contain"
+              onClick={() => handleAddToCart(product)}
+            />
+            <div className="absolute bottom-20 left-[33px]">
+              {/* Price tag */}
+              <div className="relative">
+                {/* White circle */}
+                <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
+                
+                {/* V letter */}
+                <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
+                  V
+                </div>
+                
+                {/* Description box */}
+                <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[120px]">
+                  <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
+                    {product.name}
+                  </p>
+                </div>
+                
+                {/* Price box */}
+                <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
+                  <div className="flex items-center justify-center">
+                    <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
+                    <span className="font-baloo text-white text-[48.41px]">{price.whole}</span>
+                    <span className="font-baloo text-white text-[21.33px] mt-2">,{price.decimal}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        );
+      })}
       
-      {/* Strawberry Ice Cream - 100 reais */}
-      <div className="absolute w-[284px] h-[586px] left-[793px] top-[160px]">
-        <img 
-          src="/lovable-uploads/9649b6c5-d077-48a1-800c-26f72deccaa3.png" 
-          alt="Casquinha Morango" 
-          className="h-full object-contain"
-        />
-        <div className="absolute bottom-20 left-[33px]">
-          {/* Price tag for strawberry */}
-          <div className="relative">
-            {/* White circle */}
-            <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
-            
-            {/* V letter */}
-            <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
-              V
-            </div>
-            
-            {/* Description box */}
-            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[100px]">
-              <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
-                Casquinha morango
-              </p>
-            </div>
-            
-            {/* Price box */}
-            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
-              <div className="flex items-center justify-center">
-                <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
-                <span className="font-baloo text-white text-[48.41px]">100</span>
-                <span className="font-baloo text-white text-[21.33px] mt-2">,00</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Mixed Ice Cream - 250 reais */}
-      <div className="absolute w-[308px] h-[586px] left-[1043px] top-[160px]">
-        <img 
-          src="/lovable-uploads/c44538fb-0db3-4a1f-bb6f-8a24fbf9159a.png" 
-          alt="Casquinha Mista" 
-          className="h-full object-contain"
-        />
-        <div className="absolute bottom-20 left-[33px]">
-          {/* Price tag for mixed */}
-          <div className="relative">
-            {/* White circle */}
-            <div className="absolute w-[31px] h-[31px] bg-white rounded-full -left-[13px] -top-[8px]"></div>
-            
-            {/* V letter */}
-            <div className="absolute -left-[11px] top-[16px] font-baloo text-[#48B9A0] text-[25px] transform -rotate-90">
-              V
-            </div>
-            
-            {/* Description box */}
-            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 w-[100px]">
-              <p className="font-baloo text-white text-center text-[14.77px] leading-[18px]">
-                Casquinha mista
-              </p>
-            </div>
-            
-            {/* Price box */}
-            <div className="bg-[#48B9A0] border-2 border-white rounded-xl px-3 py-2 mt-[6px] w-[144px]">
-              <div className="flex items-center justify-center">
-                <span className="font-baloo text-white text-[24.61px] mr-1">R$</span>
-                <span className="font-baloo text-white text-[48.41px]">250</span>
-                <span className="font-baloo text-white text-[21.33px] mt-2">,00</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Social Media Icons - Atualizado com novos ícones */}
+      {/* Social Media Icons */}
       <div className="absolute bottom-[30px] right-[30px] flex space-x-4">
         {/* Google Icon */}
         <div className="w-[40px] h-[40px] bg-white rounded-full flex items-center justify-center">

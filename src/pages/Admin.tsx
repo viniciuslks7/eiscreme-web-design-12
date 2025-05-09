@@ -3,26 +3,19 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, Edit, Trash, Plus, ChevronRight, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useProducts, Product } from "@/contexts/ProductContext";
 
-interface Product {
-  id: number;
-  name: string;
-  category: string;
-  price: string;
-  date: string;
-  description: string;
+interface AdminProduct extends Product {
   selected: boolean;
 }
 
 const Admin = () => {
-  const [products, setProducts] = useState<Product[]>([
-    { id: 12, name: "Ernesto", category: "Ché Guevara", price: "30 Abril 2025 16:00 pm", date: "30/04/2025", description: "Sorvete gostoso", selected: false },
-    { id: 95, name: "Bilbo", category: "Bolseiro", price: "30 Abril 2025 16:00 pm", date: "30/04/2025", description: "Sorvete gostoso", selected: true },
-    { id: 11, name: "Vida", category: "Loca", price: "30 Abril 2025 16:00 pm", date: "30/04/2025", description: "Sorvete gostoso", selected: true },
-    { id: 666, name: "Luci", category: "Fer", price: "30 Abril 2025 16:00 pm", date: "30/04/2025", description: "Sorvete gostoso", selected: true },
-    { id: 23, name: "Tony", category: "Tornado", price: "30 Abril 2025 16:00 pm", date: "30/04/2025", description: "Sorvete gostoso", selected: true },
-    { id: 3, name: "Saci", category: "Pererê", price: "30 Abril 2025 16:00 pm", date: "30/04/2025", description: "Sorvete gostoso", selected: false }
-  ]);
+  const { products: contextProducts, addProduct, removeProduct } = useProducts();
+  
+  // Convert products to admin products with selected property
+  const [products, setProducts] = useState<AdminProduct[]>(() => 
+    contextProducts.map(product => ({ ...product, selected: false }))
+  );
   
   const [currentPage, setCurrentPage] = useState(1);
   const totalItems = 221;
@@ -31,6 +24,43 @@ const Admin = () => {
     setProducts(products.map(product => 
       product.id === id ? { ...product, selected: !product.selected } : product
     ));
+  };
+  
+  const handleDeleteProduct = (id: number) => {
+    removeProduct(id);
+    setProducts(prev => prev.filter(product => product.id !== id));
+  };
+  
+  const handleDeleteAll = () => {
+    const selectedIds = products.filter(p => p.selected).map(p => p.id);
+    selectedIds.forEach(id => removeProduct(id));
+    setProducts(prev => prev.filter(product => !product.selected));
+  };
+  
+  const handleAddNew = () => {
+    // In a real application, this would open a modal or navigate to a form
+    const newProduct = {
+      id: Math.floor(Math.random() * 1000),
+      name: "Novo Sorvete",
+      category: "Nova Categoria",
+      price: 15.90,
+      date: new Date().toLocaleDateString(),
+      description: "Novo sorvete gostoso",
+      image: "/lovable-uploads/8bf12141-fce0-4e84-beaf-58c17fbfa9bf.png",
+      selected: false
+    };
+    
+    addProduct({
+      id: newProduct.id,
+      name: newProduct.name,
+      category: newProduct.category,
+      price: newProduct.price,
+      date: newProduct.date,
+      description: newProduct.description,
+      image: newProduct.image
+    });
+    
+    setProducts([...products, newProduct]);
   };
 
   return (
@@ -63,7 +93,7 @@ const Admin = () => {
           <div className="col-span-2 text-center">Produto Id</div>
           <div className="col-span-2 text-center">Nome</div>
           <div className="col-span-2 text-center">Categoria</div>
-          <div className="col-span-2 text-center">Valor</div>
+          <div className="col-span-2 text-center">Preço</div>
           <div className="col-span-2 text-center">Descrição</div>
         </div>
       </div>
@@ -88,7 +118,10 @@ const Admin = () => {
               <button className="bg-[#CF7D1E] w-12 h-10 flex items-center justify-center rounded">
                 <Edit className="text-white" size={16} />
               </button>
-              <button className="bg-[#944396] w-12 h-10 flex items-center justify-center rounded relative">
+              <button 
+                className="bg-[#944396] w-12 h-10 flex items-center justify-center rounded relative"
+                onClick={() => handleDeleteProduct(product.id)}
+              >
                 <span className="absolute bg-white w-6 h-6 rounded-full flex items-center justify-center">
                   <span className="text-[#944396] text-xs font-bold">x</span>
                 </span>
@@ -108,7 +141,7 @@ const Admin = () => {
             </div>
             
             <div className="col-span-2 flex items-center justify-center">
-              <span className="text-lg">{product.price}</span>
+              <span className="text-lg">{`R$ ${product.price.toFixed(2).replace('.', ',')}`}</span>
             </div>
             
             <div className="col-span-2 flex items-center justify-center">
@@ -120,12 +153,18 @@ const Admin = () => {
       
       {/* Action buttons */}
       <div className="container mx-auto mt-6 flex space-x-4">
-        <Button className="bg-[#226052] text-white font-nunito flex items-center">
+        <Button 
+          className="bg-[#226052] text-white font-nunito flex items-center"
+          onClick={handleAddNew}
+        >
           <Plus size={16} className="mr-1" />
           NOVO
         </Button>
         
-        <Button className="bg-[#226052] text-white font-nunito flex items-center">
+        <Button 
+          className="bg-[#226052] text-white font-nunito flex items-center"
+          onClick={handleDeleteAll}
+        >
           <Trash size={16} className="mr-1" />
           EXCLUIR TODOS
         </Button>

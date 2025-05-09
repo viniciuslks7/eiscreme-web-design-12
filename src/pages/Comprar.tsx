@@ -2,82 +2,43 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, ShoppingCart, X } from "lucide-react";
-import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-interface CartItem {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  image: string;
-}
+import { useCart } from "@/contexts/CartContext";
 
 const Comprar = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: "Casquinha de Baunilha",
-      price: 12.90,
-      quantity: 1,
-      image: "/lovable-uploads/8bf12141-fce0-4e84-beaf-58c17fbfa9bf.png"
-    },
-    {
-      id: 2,
-      name: "Casquinha de Morango",
-      price: 12.90,
-      quantity: 1,
-      image: "/lovable-uploads/319e57c8-e139-4be2-ba2f-7246aa56cc75.png"
-    },
-    {
-      id: 3,
-      name: "Casquinha Mista",
-      price: 13.90,
-      quantity: 1,
-      image: "/lovable-uploads/18a3057d-2fa8-47d4-b4c9-9a1077c684cd.png"
-    }
-  ]);
-  
-  const [couponCode, setCouponCode] = useState("");
-  
-  const handleRemoveItem = (id: number) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
-  };
-  
-  const handleQuantityChange = (id: number, value: number) => {
-    if (value < 1) value = 1;
-    setCartItems(cartItems.map(item => 
-      item.id === id ? { ...item, quantity: value } : item
-    ));
-  };
-  
-  const calculateSubtotal = (price: number, quantity: number) => {
-    return price * quantity;
-  };
-  
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
+  const { cartItems, removeFromCart, updateQuantity, getSubtotal, applyCoupon, couponCode } = useCart();
+  const [couponInput, setCouponInput] = useState("");
   
   const formatPrice = (price: number) => {
     return `R$ ${price.toFixed(2).replace('.', ',')}`;
   };
 
+  const handleQuantityChange = (id: number, value: string) => {
+    const quantity = parseInt(value, 10) || 1;
+    updateQuantity(id, quantity);
+  };
+
+  const handleApplyCoupon = () => {
+    applyCoupon(couponInput);
+  };
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Header bar */}
+      {/* Header bar with cart icon */}
       <div className="w-full bg-eiscreme py-4">
-        <div className="container mx-auto flex items-center">
+        <div className="container mx-auto flex items-center justify-between">
           <Link to="/" className="text-white font-nunito font-medium text-2xl flex items-center">
             <ArrowLeft className="mr-2" />
             VOLTAR
           </Link>
           
-          <h1 className="mx-auto text-white font-inter font-bold text-4xl flex items-center">
-            Carrinho
-            <ShoppingCart className="ml-4" size={36} />
-          </h1>
+          <div className="flex items-center">
+            <h1 className="text-white font-inter font-bold text-4xl">Carrinho</h1>
+            <ShoppingCart className="ml-4" size={36} color="white" />
+          </div>
+          
+          <div className="w-[36px]"></div> {/* Empty div for spacing */}
         </div>
       </div>
       
@@ -106,7 +67,7 @@ const Comprar = () => {
             <div className="col-span-1 flex justify-center">
               <button 
                 className="w-10 h-10 rounded-full border border-black flex items-center justify-center"
-                onClick={() => handleRemoveItem(item.id)}
+                onClick={() => removeFromCart(item.id)}
               >
                 <X size={20} />
               </button>
@@ -124,14 +85,14 @@ const Comprar = () => {
                   type="number"
                   min="1"
                   value={item.quantity}
-                  onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
+                  onChange={(e) => handleQuantityChange(item.id, e.target.value)}
                   className="w-full text-center py-2 rounded-lg font-poppins text-xl bg-transparent"
                 />
               </div>
             </div>
             <div className="col-span-3 text-center">
               <p className="font-poppins font-bold text-xl">
-                {formatPrice(calculateSubtotal(item.price, item.quantity))}
+                {formatPrice(item.price * item.quantity)}
               </p>
             </div>
           </div>
@@ -147,11 +108,12 @@ const Comprar = () => {
             <Input 
               className="border border-black h-12 font-nunito"
               placeholder="CÓDIGO DO CUPOM"
-              value={couponCode}
-              onChange={(e) => setCouponCode(e.target.value)}
+              value={couponInput}
+              onChange={(e) => setCouponInput(e.target.value)}
             />
             <Button 
               className="w-full bg-eiscreme text-white font-nunito font-medium text-xl mt-4 py-6 rounded-full"
+              onClick={handleApplyCoupon}
             >
               APLICAR CUPOM
             </Button>
@@ -166,7 +128,7 @@ const Comprar = () => {
               <p className="font-nunito font-bold">SUBTOTAL</p>
             </div>
             <div className="col-span-2 p-3 text-right">
-              <p className="font-nunito">{formatPrice(calculateTotal())}</p>
+              <p className="font-nunito">{formatPrice(getSubtotal())}</p>
             </div>
           </div>
           <div className="grid grid-cols-3 border border-black bg-gray-100 border-t-0">
@@ -174,7 +136,7 @@ const Comprar = () => {
               <p className="font-nunito font-bold">TOTAL</p>
             </div>
             <div className="col-span-2 p-3 text-right">
-              <p className="font-nunito">{formatPrice(calculateTotal())}</p>
+              <p className="font-nunito">{formatPrice(getSubtotal())}</p>
             </div>
           </div>
           
